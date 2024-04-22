@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blogs</title>
+  <style>
+    main {
+      width: 80%;
+      margin: 0 auto;
+    }
+    h1 {
+      text-align: center;
+    }
+    ul {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+
+    ul div {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    ul li {
+      list-style: none;
+      text-align: justify;
+    }
+    span {
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+  <%-include('partials/header'); -%>
+  <main>
+    <h1>BLOGS</h1>
+    <ul>
+      <% posts.forEach((post) => { %>
+        <div>
+          <li>
+            <a href="/posts/<%= post._id %>">
+              <span>Title:</span> <%= post.title %>
+            </a>
+          </li>
+          <li><span>Description:</span> <%= post.description %></li>
+          <li><span>Author's Name:</span> <%= post.author %></li>
+          <li><span>Body:</span> <%= post.body %></li>
+          <li><span>Date created:</span> <%= post.createdAt.toDateString() %></li>
+          <li><span>Date updated:</span> <%= post.updatedAt.toDateString() %></li>
+        </div>
+      <% }) %>
+    </ul>
+  </main>
+</body>
+</html>

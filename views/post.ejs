@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Post</title>
+  <style>
+    body {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    h1 {
+      text-align: center;
+    }
+    ul div {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    ul li {
+      list-style: none;
+      text-align: justify;
+    }
+    span {
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+  <%-include('partials/header'); -%>
+  <h1><%= post.author %>'s Blog</h1>
+  <main>
+    <ul>
+      <div>
+        <li><span>Title:</span> <%= post.title %></li>
+        <li><span>Description:</span> <%= post.description %></li>
+        <li><span>Author's Name:</span> <%= post.author %></li>
+        <li><span>Body:</span> <%= post.body %></li>
+        <li><span>Date created:</span> <%= post.createdAt.toDateString() %></li>
+        <li><span>Date updated:</span> <%= post.updatedAt.toDateString() %></li>
+      </div>
+    </ul>
+  </main>
+</body>
+</html>
