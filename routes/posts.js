@@ -9,7 +9,7 @@ require("../authentication/auth");
 router.get("/", controllers.getAllPosts);
 router.get("/:id", controllers.getPostById);
 router.post("/", passport.authenticate("jwt", { session: false }), controllers.addPost);
-router.put("/:id", controllers.updatePost);
-router.delete("/:id", controllers.deletePost);
+router.put("/:id", passport.authenticate("jwt", { session: false }), controllers.updatePost);
+router.delete("/:id", passport.authenticate("jwt", { session: false }), controllers.deletePost);
 
 module.exports = router;

@@ -47,6 +47,8 @@
           <li><span>Description:</span> <%= post.description %></li>
           <li><span>Author's Name:</span> <%= post.author %></li>
           <li><span>Body:</span> <%= post.body %></li>
+          <li><span>State:</span> <%= post.state %></li>
+          <li><span>Read Count:</span> <%=post.read_count %></li>
           <li><span>Date created:</span> <%= post.createdAt.toDateString() %></li>
           <li><span>Date updated:</span> <%= post.updatedAt.toDateString() %></li>
         </div>
