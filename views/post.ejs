@@ -11,7 +11,7 @@
       left: 50%;
       transform: translate(-50%, -50%);
     }
-    h1 {
+    h2 {
       text-align: center;
     }
     ul div {
@@ -30,11 +30,12 @@
 </head>
 <body>
   <%-include('partials/header'); -%>
+  <h2><%= post.title %></h2>
   <main>
     <ul>
       <div>
-        <li><span>Title:</span> <%= post.title %></li>
         <li><span>Description:</span> <%= post.description %></li>
+        <li><span>Author:</span> <%= post.author %></li>
         <li><span>Body:</span> <%= post.body %></li>
         <li><span>State:</span> <%= post.state %></li>
           <li><span>Read Count:</span> <%=post.read_count %></li>

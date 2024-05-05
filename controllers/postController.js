@@ -15,7 +15,7 @@ async function getAllPosts(req, res) {
 
     res.status(200);
     res.render("blogs", { posts });
-    // res.send(posts);
+
   } catch (error) {
     res.status(500);
     res.json({
@@ -30,7 +30,7 @@ async function getPostById(req, res) {
     const id = req.params.id;
 
     const post = await Post.findOneAndUpdate(
-      {_id: id, state: "published"},
+      {_id: id, state: "draft"},
       { $inc: { read_count: 1}},
       { new: true }
     ).populate({
@@ -40,7 +40,6 @@ async function getPostById(req, res) {
 
     res.status(200);
     res.render("post", { post });
-    // res.send(post);
 
   } catch (error) {
     res.status(400);
@@ -59,6 +58,7 @@ async function addPost(req, res) {
       path: "author",
       select: "-password"
     });
+    await post.save();
 
     res.status(201);
     res.json({
@@ -89,7 +89,7 @@ async function updatePost(req, res) {
       res.status(500);
       res.json({
         message: "Unable to update article",
-        err: err.message
+        err: error.message
       })
   }
 }
