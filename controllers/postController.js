@@ -14,7 +14,8 @@ async function getAllPosts(req, res) {
     });
 
     res.status(200);
-    res.render("blogs", { posts });
+    res.send(posts);
+    // res.render("blogs", { posts });
 
   } catch (error) {
     res.status(500);
@@ -39,7 +40,8 @@ async function getPostById(req, res) {
     });
 
     res.status(200);
-    res.render("post", { post });
+    res.send(post);
+    // res.render("post", { post });
 
   } catch (error) {
     res.status(400);
