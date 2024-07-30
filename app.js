@@ -1,8 +1,9 @@
 require("dotenv").config();
 
 const express = require("express");
-
 const rateLimit = require("express-rate-limit");
+const morgan = require("morgan");
+
 const { connectMongodb } = require("./connect_db");
 const postsRoute = require("./routes/posts");
 const authRoute = require("./routes/auth");
@@ -29,6 +30,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static("public"));
 app.use(express.json());
 app.use(limiter);
+app.use(morgan("dev"));
 
 app.use("/auth", authRoute);
 app.use("/posts", postsRoute);
